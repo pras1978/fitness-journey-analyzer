@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Env
+.env
+
+# Local-only (do NOT push)
+data/
+storage/
+db/
+models/**/model.keras
+models/**/prophet.pkl
+models/**/lstm.keras
+models/**/hf_model/
+
+# OS
+.DS_Store
+Thumbs.db
