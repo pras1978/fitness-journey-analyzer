@@ -1,0 +1,71 @@
+name: fitness-analyzer
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+
+dependencies:
+  # Python version
+  - python=3.10
+
+  # Core Web Framework
+  - fastapi
+  - uvicorn
+  - python-dotenv
+  - pydantic
+
+  # Database
+  - sqlalchemy
+  - postgresql
+
+  # Data Processing
+  - numpy
+  - pandas
+  - scikit-learn
+  - opencv
+
+  # PyTorch (CPU version - uncomment GPU lines if needed)
+  - pytorch::pytorch
+  - pytorch::pytorch-cpu
+  # GPU versions (uncomment one):
+  # - pytorch::pytorch-cuda::pytorch-cuda=11.8
+  # - pytorch::pytorch-cuda::pytorch-cuda=12.1
+
+  # Time Series
+  - prophet
+
+  # Frontend
+  - streamlit
+
+  # Testing
+  - pytest
+  - pytest-cov
+
+  # Development Tools
+  - black
+  - flake8
+  - mypy
+  - git
+
+  # Pip for PyPI-only packages
+  - pip
+
+  - pip:
+    - password-validator
+    - python-jose[cryptography]
+    - passlib[bcrypt]
+    - python-multipart
+    - slowapi
+    - transformers
+    - databases
+    - python-json-logger
+    - pytest-asyncio
+    - pytest-mock
+    - mlflow
+    - isort
+    - pylint
+    - ipython
+    - ipdb
+    - pre-commit
+    - sphinx
+    - sphinx-rtd-theme
