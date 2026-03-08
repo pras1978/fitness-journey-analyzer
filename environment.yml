@@ -1,0 +1,76 @@
+name: fitness-analyzer
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python version
+  - python=3.10
+
+  # Core packages available via conda
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+
+  # Pip for complex packages
+  - pip:
+    - fastapi
+    - uvicorn[standard]
+    - python-dotenv
+    - pydantic
+    - pydantic-settings
+    - sqlalchemy
+    - psycopg2-binary
+    - databases
+    - python-jose[cryptography]
+    - passlib[bcrypt]
+    - bcrypt
+    - python-multipart
+    - slowapi
+    - torch>=2.0.0
+    - torchvision
+    - transformers
+    - datasets
+    - kaggle
+    - opencv-python
+    - prophet
+    - streamlit
+    - requests
+    - pytest
+    - pytest-asyncio
+    - pytest-cov
+    - pytest-mock
+    - black
+    - flake8
+    - mypy
+    - isort
+    - pylint
+    - ipython
+    - ipdb
+    - pre-commit
+    - mlflow
+    - python-json-logger
+  - pip
+
+  - pip:
+    - password-validator
+    - python-jose[cryptography]
+    - passlib[bcrypt]
+    - python-multipart
+    - slowapi
+    - transformers
+    - databases
+    - python-json-logger
+    - pytest-asyncio
+    - pytest-mock
+    - mlflow
+    - isort
+    - pylint
+    - ipython
+    - ipdb
+    - pre-commit
+    - sphinx
+    - sphinx-rtd-theme
