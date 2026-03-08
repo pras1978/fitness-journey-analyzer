@@ -1,53 +1,58 @@
 name: fitness-analyzer
 channels:
   - conda-forge
-  - pytorch
   - defaults
 
 dependencies:
   # Python version
   - python=3.10
 
-  # Core Web Framework
-  - fastapi
-  - uvicorn
-  - python-dotenv
-  - pydantic
-
-  # Database
-  - sqlalchemy
-  - postgresql
-
-  # Data Processing
+  # Core packages available via conda
+  - pip
   - numpy
   - pandas
   - scikit-learn
-  - opencv
+  - matplotlib
+  - seaborn
 
-  # PyTorch (CPU version - uncomment GPU lines if needed)
-  - pytorch::pytorch
-  - pytorch::pytorch-cpu
-  # GPU versions (uncomment one):
-  # - pytorch::pytorch-cuda::pytorch-cuda=11.8
-  # - pytorch::pytorch-cuda::pytorch-cuda=12.1
-
-  # Time Series
-  - prophet
-
-  # Frontend
-  - streamlit
-
-  # Testing
-  - pytest
-  - pytest-cov
-
-  # Development Tools
-  - black
-  - flake8
-  - mypy
-  - git
-
-  # Pip for PyPI-only packages
+  # Pip for complex packages
+  - pip:
+    - fastapi
+    - uvicorn[standard]
+    - python-dotenv
+    - pydantic
+    - pydantic-settings
+    - sqlalchemy
+    - psycopg2-binary
+    - databases
+    - python-jose[cryptography]
+    - passlib[bcrypt]
+    - bcrypt
+    - python-multipart
+    - slowapi
+    - torch>=2.0.0
+    - torchvision
+    - transformers
+    - datasets
+    - kaggle
+    - opencv-python
+    - prophet
+    - streamlit
+    - requests
+    - pytest
+    - pytest-asyncio
+    - pytest-cov
+    - pytest-mock
+    - black
+    - flake8
+    - mypy
+    - isort
+    - pylint
+    - ipython
+    - ipdb
+    - pre-commit
+    - mlflow
+    - python-json-logger
   - pip
 
   - pip:

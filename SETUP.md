@@ -1,68 +1,10 @@
 # Environment Setup Guide
 
-## Option A: Conda Users (Recommended for ML/Data Science)
-
-### Prerequisites
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/download) installed
-
-### Setup
-
-1. **Clone and navigate to project**
-   ```bash
-   cd fitness-journey-analyzer
-   ```
-
-2. **Create Conda environment**
-   ```bash
-   conda env create -f environment.yml
-   ```
-
-3. **Activate environment**
-   ```bash
-   conda activate fitness-analyzer
-   ```
-
-4. **Verify installation**
-   ```bash
-   python -c "import fastapi, torch, transformers; print('✓ All imports OK')"
-   ```
-
-5. **Create .env file**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration (see section below)
-   ```
-
-### GPU Support (Optional)
-
-If using GPU, update `environment.yml` before creation:
-
-Uncomment one of these lines in the `dependencies` section:
-```yaml
-# - pytorch::pytorch-cuda::pytorch-cuda=11.8  # For CUDA 11.8
-# - pytorch::pytorch-cuda::pytorch-cuda=12.1  # For CUDA 12.1
-```
-
-Then recreate the environment:
-```bash
-conda env remove -n fitness-analyzer
-conda env create -f environment.yml
-```
-
-Verify GPU access:
-```bash
-python -c "import torch; print(torch.cuda.is_available())"
-```
-
----
-
-## Option B: pip + venv (For Standard Python Users)
-
-### Prerequisites
+## Prerequisites
 - Python 3.10+ installed
 - `pip` and `venv` available
 
-### Setup
+## Setup
 
 1. **Clone and navigate to project**
    ```bash
@@ -236,9 +178,7 @@ If doing development work:
 ### Backend API Server
 ```bash
 # Activate environment first
-conda activate fitness-analyzer  # Conda users
-# or
-source venv/bin/activate  # pip users
+source venv/bin/activate
 
 # Start FastAPI dev server
 uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
@@ -250,13 +190,25 @@ API docs (Swagger): `http://localhost:8000/docs`
 ### Frontend (Streamlit)
 ```bash
 # In a separate terminal, activate environment
-conda activate fitness-analyzer  # Conda users
+source venv/bin/activate
 
 # Start Streamlit app
 streamlit run frontend/streamlit_app.py
 ```
 
 Frontend will be available at: `http://localhost:8501`
+
+### Using Makefile (Recommended)
+```bash
+# Start API server
+make run-api
+
+# Start frontend (in separate terminal)
+make run-frontend
+
+# Or start both (shows instructions)
+make run-all
+```
 
 ---
 
@@ -266,9 +218,7 @@ Frontend will be available at: `http://localhost:8501`
 **Problem**: `ModuleNotFoundError: No module named 'fastapi'`
 
 **Solution**:
-- Ensure environment is activated:
-  - Conda: `conda activate fitness-analyzer`
-  - venv: `source venv/bin/activate`
+- Ensure environment is activated: `source venv/bin/activate`
 - Reinstall dependencies: `pip install -r requirements.txt --force-reinstall`
 
 ### PostgreSQL driver error
@@ -344,10 +294,6 @@ cp .env.example .env
 ## Deactivating Environment
 
 ```bash
-# Conda
-conda deactivate
-
-# venv
 deactivate
 ```
 
@@ -355,17 +301,7 @@ deactivate
 
 ## Quick Reference
 
-### Conda Commands
-```bash
-conda env create -f environment.yml    # Create environment
-conda activate fitness-analyzer         # Activate environment
-conda deactivate                        # Deactivate environment
-conda env list                          # List all environments
-conda env remove -n fitness-analyzer   # Delete environment
-conda install package-name              # Install package
-```
-
-### pip Commands
+### Environment Setup
 ```bash
 python3 -m venv venv                    # Create venv
 source venv/bin/activate                # Activate venv (macOS/Linux)
@@ -375,15 +311,19 @@ pip list                                # List installed packages
 pip freeze > requirements.txt           # Export installed packages
 ```
 
-### Development Commands
+### Makefile Commands (Recommended)
 ```bash
-make env-conda                          # Create Conda environment
-make env-pip                            # Create pip venv
-make env-setup                          # Set up .env file
-make install-dev                        # Install dev dependencies
-make test                               # Run tests
-make lint                               # Run linters
-make format                             # Format code
+make help                              # Show all available commands
+make env-pip                           # Create pip venv
+make env-setup                         # Set up .env file
+make install-dev                       # Install dev dependencies
+make test                              # Run tests
+make lint                              # Run linters
+make format                            # Format code
+make run-api                           # Start API server
+make run-frontend                      # Start frontend
+make run-all                           # Show instructions to run both
+make clean                             # Clean cache files
 ```
 
 ---
