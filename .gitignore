@@ -21,3 +21,13 @@ models/**/hf_model/
 # OS
 .DS_Store
 Thumbs.db
+
+# Virtual environment
+venv/
+
+# Database
+db/*.db
+
+# Uploaded images
+data/uploads/
+
